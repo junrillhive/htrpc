@@ -227,7 +227,7 @@ flowchart LR
 
 ### Phase 1: Frontpage & Global Navigation Foundation (Completed)
 - [x] Frontpage design (`index.html`) with full Local SEO (`MedicalClinic`, `Physician`, `FAQPage` JSON-LD).
-- [x] Production Header Mega-Menu with dropdowns for `About Us`, `Services` (12 clinical services), `Education` (8 owned guides + blog), `Payment & Insurance`, `Blog`, `Contact`, and `Patient Portal`. `Locations` is a single header link to the `locations.html` hub.
+- [x] Production Header Mega-Menu with dropdowns for `About Us`, `Services` (12 clinical services), `Education` (8 owned guides + blog), `Payment & Insurance`, `Blog`, `Contact`, and `Patient Portal`. `Locations` is not in the header; it is reached via the footer.
 - [x] Site-wide footer "Areas We Serve" row linking all 6 local SEO pages (Portsmouth, Norfolk, Chesapeake, Suffolk, Virginia Beach, Virginia Telehealth) from every page.
 
 ### Phase 2: Core Clinic, Team & 12 Client Service Pages (Completed)
