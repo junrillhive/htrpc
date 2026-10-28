@@ -505,42 +505,98 @@
   const EDU_TARGETS = {
     bp: {
       normal: {
-        badge: 'Normal Blood Pressure',
-        stage: 'Under 120/80 mmHg',
-        meaning: 'Your systolic pressure is below 120 and diastolic is below 80. Artery wall pressure is in the healthy target range.',
-        action: 'Continue annual wellness screenings, regular physical activity, and a heart-healthy low-sodium diet.'
+        badge: '< 120 / 80 mmHg',
+        stage: 'Normal Resting Blood Pressure (AHA Goal)',
+        meaning: 'Your resting systolic pressure is below 120 mmHg and diastolic pressure is below 80 mmHg. Vascular strain on your heart, brain, and kidneys remains low.',
+        action: 'Continue balanced low-sodium meals, 150 minutes of weekly walking, and recheck at your Annual Wellness Exam at Suite 622.'
       },
       elevated: {
-        badge: 'Elevated / Stage 1 Range',
-        stage: '120–139 / 80–89 mmHg',
-        meaning: 'Consistent readings at or above 130/80 mmHg indicate Stage 1 Hypertension, which silently increases heart disease and stroke risk.',
-        action: 'Schedule a primary care blood pressure check at Suite 622, start a twice-daily home cuff log, and review nutrition strategies.'
+        badge: '120–129 / < 80 mmHg',
+        stage: 'Elevated Blood Pressure Range',
+        meaning: 'Systolic readings consistently between 120 and 129 mmHg with diastolic under 80 mmHg signal early arterial stiffness that often progresses to hypertension without lifestyle adjustments.',
+        action: 'Begin a 14-day twice-daily home upper-arm cuff log, reduce dietary sodium below 2,000 mg/day, and schedule a preventive check in Portsmouth.'
+      },
+      stage1: {
+        badge: '130–139 / 80–89 mmHg',
+        stage: 'Stage 1 Hypertension — Clinical Action Needed',
+        meaning: 'Consistent readings of 130–139 systolic or 80–89 diastolic indicate Stage 1 Hypertension, which silently increases heart disease, kidney, and stroke risk.',
+        action: 'Schedule a Chronic Disease Management visit at 355 Crawford St, Suite 622 for a personalized nutrition plan, kidney/electrolyte lab panel, and therapy review.'
+      },
+      stage2: {
+        badge: '≥ 140 / 90 mmHg',
+        stage: 'Stage 2 Hypertension — High-Priority Care',
+        meaning: 'Sustained readings at 140/90 mmHg or higher require active medication and lifestyle management to protect your heart, brain, and renal blood vessels.',
+        action: 'Book a same-week blood pressure evaluation in Portsmouth or call (757) 516-7554. If readings exceed 180/120 mmHg with chest pain or vision changes, call 911.'
       },
       high: {
-        badge: 'Stage 2 Hypertension',
-        stage: '140/90 mmHg or Higher',
-        meaning: 'Sustained readings at 140/90 mmHg or above require active clinical management to protect your heart, kidneys, and brain vasculature.',
+        badge: '≥ 140 / 90 mmHg',
+        stage: 'Stage 2 Hypertension — High-Priority Care',
+        meaning: 'Sustained readings at 140/90 mmHg or higher require active clinical management to protect your heart, kidneys, and brain vasculature.',
         action: 'Book a Chronic Disease Management visit in Portsmouth for a personalized medication and lifestyle care plan.'
       }
     },
     a1c: {
       normal: {
-        badge: 'Normal Glucose Range',
-        stage: 'A1C Below 5.7%',
-        meaning: 'Your 3-month average blood sugar is in the non-diabetic reference range.',
-        action: 'Maintain routine preventive lab panels during your Annual Wellness Exam.'
+        badge: 'A1C < 5.7%',
+        stage: 'Normal 90-Day Glucose Range (eAG < 117 mg/dL)',
+        meaning: 'Your 3-month average blood glucose is in the healthy non-diabetic reference range with normal insulin sensitivity.',
+        action: 'Maintain routine fasting glucose and A1C screening during your Annual Wellness Exam at Suite 622.'
       },
       elevated: {
-        badge: 'Prediabetes Range',
-        stage: 'A1C 5.7% to 6.4%',
-        meaning: 'Blood sugar is elevated above normal, signaling insulin resistance and heightened risk of progressing to Type 2 diabetes.',
-        action: 'Work with Laurie Salerno, ANP-BC or our team on food-based metabolic nutrition and weight management to reverse prediabetes.'
+        badge: 'A1C 5.7% – 6.4%',
+        stage: 'Prediabetes Range — Reversible Window',
+        meaning: 'Blood sugar is elevated above normal (estimated average glucose 117–137 mg/dL), signaling insulin resistance and heightened risk of developing Type 2 diabetes.',
+        action: 'Partner with Laurie Salerno, ANP-BC on plate-method nutrition and a 5%–7% weight reduction goal to reverse prediabetes before medication is needed.'
+      },
+      stage1: {
+        badge: 'A1C 6.5% – 7.9%',
+        stage: 'Type 2 Diabetes — Active Management Range',
+        meaning: 'An A1C of 6.5% or higher confirms diabetes. For most non-pregnant adults, the ADA goal is keeping A1C below 7.0% (eAG < 154 mg/dL) to prevent microvascular damage.',
+        action: 'Schedule quarterly A1C checks, annual urine microalbumin kidney screening, monofilament foot exams, and cardiorenal-protective therapy in Portsmouth.'
+      },
+      stage2: {
+        badge: 'A1C ≥ 8.0%',
+        stage: 'Uncontrolled Diabetes — Priority Adjustment',
+        meaning: 'An A1C at or above 8.0% (eAG ≥ 183 mg/dL) places significant oxidative stress on retinal, renal, and peripheral nerves and increases cardiovascular risk.',
+        action: 'Book a priority Chronic Care visit at Suite 622 or via Virginia Telehealth to adjust GLP-1, SGLT2, or basal therapy and review home glucose logs.'
       },
       high: {
-        badge: 'Diabetes Care Range',
-        stage: 'A1C 6.5% or Higher',
+        badge: 'A1C ≥ 6.5%',
+        stage: 'Diabetes Care Range',
         meaning: 'Indicates diabetes requiring structured quarterly A1C monitoring, kidney and foot protection, and individualized therapy.',
         action: 'Schedule a Type 2 Diabetes & Chronic Care consultation at Suite 622 or by Virginia telehealth.'
+      }
+    },
+    ldl: {
+      normal: {
+        badge: 'LDL < 100 mg/dL',
+        stage: 'Optimal Fasting LDL Cholesterol',
+        meaning: 'Low-density lipoprotein (“bad”) cholesterol is at goal for general primary prevention, minimizing plaque buildup inside coronary and carotid arteries.',
+        action: 'Recheck a fasting lipid panel every 12 months during your Annual Wellness Exam in Downtown Portsmouth.'
+      },
+      elevated: {
+        badge: 'LDL 100–129 mg/dL',
+        stage: 'Near-Optimal / Borderline LDL Range',
+        meaning: 'Acceptable for low-risk adults, but above target if you have diabetes, high blood pressure, smoking history, or a family history of early heart disease.',
+        action: 'Increase soluble fiber (oats, beans, greens), substitute olive oil and fish for saturated fats, and calculate your 10-year ASCVD risk score with our clinicians.'
+      },
+      stage1: {
+        badge: 'LDL 130–159 mg/dL',
+        stage: 'Borderline High LDL Cholesterol',
+        meaning: 'Circulating atherogenic cholesterol is elevated and can gradually deposit plaque along arterial walls, particularly when paired with high triglycerides or hypertension.',
+        action: 'Schedule a Preventive Health Screening and nutrition review at Suite 622 to evaluate dietary changes and whether statin or non-statin therapy is indicated.'
+      },
+      stage2: {
+        badge: 'LDL ≥ 160 mg/dL',
+        stage: 'High / Very High LDL — Active Lipid Therapy',
+        meaning: 'Readings at 160 mg/dL or higher (or ≥ 190 mg/dL severe hypercholesterolemia) significantly accelerate coronary artery disease and stroke risk.',
+        action: 'Book a Heart Disease Prevention consultation with Laurie Salerno, ANP-BC for targeted lipid-lowering therapy and hepatic/metabolic lab monitoring.'
+      },
+      high: {
+        badge: 'LDL ≥ 160 mg/dL',
+        stage: 'High LDL Cholesterol',
+        meaning: 'Significantly accelerates coronary plaque progression and warrants targeted lipid-lowering care.',
+        action: 'Book a Heart Disease Prevention consultation at 355 Crawford Street, Suite 622.'
       }
     }
   };
@@ -549,7 +605,8 @@
     if (!metricSelect || !levelSelect) return;
     const m = metricSelect.value || 'bp';
     const l = levelSelect.value || 'normal';
-    const data = (EDU_TARGETS[m] && EDU_TARGETS[m][l]) || EDU_TARGETS.bp.normal;
+    const metricGroup = EDU_TARGETS[m] || EDU_TARGETS.bp;
+    const data = metricGroup[l] || metricGroup.normal;
 
     if (eduBadge) eduBadge.textContent = data.badge;
     if (eduStage) eduStage.textContent = data.stage;

@@ -126,13 +126,27 @@ a {
   outline-offset: 3px;
 }
 
-.sr-only {
+.sr-only,
+.skip-link {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  top: 1rem;
+  left: var(--margin);
+  width: auto;
+  height: auto;
+  clip-path: none;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--accent);
+  color: var(--accent-ink);
+  z-index: 9999;
 }
 
 /* ---------- Typography ---------- */
@@ -2183,6 +2197,14 @@ p + p {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+}
+
+.guide-dossier__box:nth-child(even) {
+  margin-right: 0.4rem;
+}
+
+.guide-dossier__box:nth-child(3n) {
+  margin-right: 0.75rem;
 }
 
 /* Clinical Data Tables (Sliding Scale, CPT Fees, Drive Times) */
