@@ -6,16 +6,16 @@
 
 ```mermaid
 flowchart LR
-  Home["/ (Home - Portsmouth Primary Care)"]
+  Home["index.html (Home - Portsmouth Primary Care)"]
 
-  P1["About Us (/about-us/)"]
-  P2["Medical Team (/team/)"]
-  P3["Services (/services/)"]
-  P4["Locations (/locations/)"]
-  P5["Education (/education/)"]
-  P6["Payment & Insurance (/payment-insurance-policy/)"]
-  P7["Blog (/blog/)"]
-  P8["Contact (/contact/)"]
+  P1["About Us (about-us.html)"]
+  P2["Medical Team (about-us.html#team)"]
+  P3["Services Hub (services.html)"]
+  P4["Locations Hub (locations.html)"]
+  P5["Education Hub (education.html)"]
+  P6["Payment & Insurance (payment-insurance-policy.html)"]
+  P7["Blog (blog.html)"]
+  P8["Contact (contact.html)"]
 
   Home --> P1
   Home --> P2
@@ -26,30 +26,29 @@ flowchart LR
   Home --> P7
   Home --> P8
 
-  P1 --> C1["/what-to-expect-first-visit/"]
-  P1 --> C2["/careers/ & /pay/"]
+  P1 --> C1["blog.html#what-to-expect-first-visit"]
+  P1 --> C2["about-us.html#careers & payment-insurance-policy.html#pay"]
 
-  P2 --> T1["/team/aaron-sents-pa-c/"]
-  P2 --> T2["/team/laurie-salerno-anp-bc/"]
-  P2 --> T3["/team/shanice-edwards-np-bc/"]
+  P2 --> T1["about-us.html#aaron-sents"]
+  P2 --> T2["about-us.html#laurie-salerno"]
+  P2 --> T3["about-us.html#shanice-edwards"]
 
-  P3 --> S_Prev["Preventive & Wellness (4 Pages)"]
-  P3 --> S_Care["Chronic, Acute & Telehealth (4 Pages)"]
-  P3 --> S_Spec["Specialty & Counseling (4 Pages)"]
+  P3 --> S_Prev["Preventive & Primary Care (6 Pages Built)"]
+  P3 --> S_Care["Chronic, Acute & Specialty Care (6 Pages Built)"]
 
-  P4 --> L_Core["/locations/portsmouth-va/ (Primary Clinic)"]
-  P4 --> L_Cities["Norfolk, Chesapeake, Suffolk, VA Beach (4 Pages)"]
-  P4 --> L_Tele["/telehealth/ (Statewide Virginia)"]
+  P4 --> L_Core["portsmouth-va.html (Primary Clinic)"]
+  P4 --> L_Cities["norfolk-va, chesapeake-va, suffolk-va, virginia-beach-va (4 Pages Built)"]
+  P4 --> L_Tele["telehealth.html (Statewide Virginia Built)"]
 
-  P5 --> E_Cardio["Heart, BP, AFib & Stroke Guides (6 Pages)"]
-  P5 --> E_Metab["Diabetes & Smoking Cessation (2 Pages)"]
+  P5 --> E_Cardio["Heart, BP, AFib & Cardiac Arrest Guides (5 Pages Built)"]
+  P5 --> E_Metab["Diabetes, Stroke & Smoking Cessation (3 Pages Built)"]
 
-  P6 --> I1["/insurance/medicare-primary-care/"]
-  P6 --> I2["/insurance/tricare-military-care/"]
-  P6 --> I3["/insurance/sliding-fee-scale/"]
+  P6 --> I1["#medicare-primary-care (Medicare & Advantage)"]
+  P6 --> I2["#tricare-military-care (TRICARE & Military)"]
+  P6 --> I3["#sliding-fee-scale ($25–$65 Sliding Scale)"]
 
-  P7 --> B1["Seasonal Health & Clinic Updates (/blog/*)"]
-  P8 --> Book["/book-an-appointment/ & /patient-portal/"]
+  P7 --> B1["Seasonal Health & First-Visit Guides (blog.html)"]
+  P8 --> Book["OptiMantra Online Booking & Patient Portal"]
 ```
 
 ### 1B. Internal Linking & Patient Conversion Flow (Left -> Right)
@@ -57,19 +56,19 @@ flowchart LR
 ```mermaid
 flowchart LR
   subgraph Step1["1. Organic Discovery (Entry Pages)"]
-    Edu["8 Education Guides (/education/*)"]
-    Blog["Health & Wellness Blog (/blog/)"]
-    Loc["6 Location Pages (/locations/*)"]
+    Edu["8 Education Guides (high-blood-pressure.html etc.)"]
+    Blog["Health & Wellness Blog (blog.html)"]
+    Loc["6 Location Pages (portsmouth-va.html etc.)"]
   end
 
   subgraph Step2["2. Clinical Authority & E-E-A-T"]
-    Bio["3 Provider Bios (/team/*)"]
-    Svc["12 Clinical Services (/annual-wellness-exams/ etc.)"]
+    Bio["3 Provider Bios (about-us.html#team)"]
+    Svc["12 Clinical Services (annual-wellness-exams.html etc.)"]
   end
 
   subgraph Step3["3. Access & Conversion"]
-    Ins["Insurance & Sliding Scale (/insurance/*)"]
-    Book["Book Appointment (/book-an-appointment/)"]
+    Ins["Insurance & Sliding Scale (payment-insurance-policy.html)"]
+    Book["OptiMantra Booking & Callback Bar"]
   end
 
   Edu -->|"Medically Reviewed By"| Bio
@@ -86,189 +85,160 @@ flowchart LR
 ### 1C. Strategic Overview
 - **Primary Clinic Location:** 355 Crawford Street, Suite 622, Portsmouth, VA 23704 (`(757) 516-7554`)
 - **Primary Market:** Portsmouth, Norfolk, Chesapeake, Suffolk, Virginia Beach, and statewide Virginia via Telehealth.
+- **Deployment Architecture:** 34 flat static HTML pages (`*.html` in repository root) sharing a single stylesheet (`styles.css`), interactive motion/calculator layer (`script.js`), and verified media library (`assets/`) for zero-dependency hosting on GitHub Pages or production web servers.
 - **Core SEO Objectives:**
-  1. **Zero URL Regression:** Preserve all 23 existing indexable slugs from `https://htrpc.com/page-sitemap.xml` (including all 12 client clinical service URLs) so existing backlinks, citations, and Google Search Console equity carry forward without redirect loss.
-  2. **First-Party Education Hub (`/education/*`):** Replace the live site's 8 outbound links to `cdc.gov` and `heart.org` under the **Education** menu with 8 authoritative, clinician-reviewed first-party condition guides written for Hampton Roads patients. This stops leaking visitors and PageRank while capturing high-volume chronic-care search traffic.
-  3. **Local SEO Service-Area Architecture (`/locations/*`):** Build dedicated hyper-local landing pages for Portsmouth, Norfolk, Chesapeake, Suffolk, and Virginia Beach with driving directions to Crawford Street, transit/bridge-tunnel context, and local `MedicalClinic` schema.
-  4. **E-E-A-T Clinician Profiles (`/team/*`):** Give each provider (Aaron Sents, PA-C; Laurie A. Salerno, ANP-BC; Shanice Edwards, NP-BC) an individual NPI-backed profile page with `Physician` / `MedicalBusiness` structured data, credentials, and authored/reviewed Education articles.
+  1. **Zero URL Regression:** Preserve all 12 client clinical service slugs (`annual-wellness-exams.html`, `chronic-disease-management.html`, etc.) and core clinic slugs so existing backlinks, citations, and Google Search Console equity carry forward.
+  2. **First-Party Education Hub (`education.html` + 8 Standalone Guides):** Replaced the legacy site's 8 outbound links to `cdc.gov` and `heart.org` under the **Education** menu with 8 authoritative, clinician-reviewed first-party condition guides written for Hampton Roads patients (`high-blood-pressure.html`, `hypertension-management.html`, `type-2-diabetes.html`, `heart-disease-prevention.html`, `atrial-fibrillation.html`, `stroke-warning-signs.html`, `cardiac-arrest-guide.html`, `smoking-cessation.html`).
+  3. **Local SEO Service-Area Architecture (`locations.html` + 6 Location Pages):** Built dedicated hyper-local landing pages for Portsmouth (`portsmouth-va.html`), Norfolk (`norfolk-va.html`), Chesapeake (`chesapeake-va.html`), Suffolk (`suffolk-va.html`), Virginia Beach (`virginia-beach-va.html`), and statewide Virginia Telehealth (`telehealth.html`) with neighborhood drive-time tables, transit/bridge-tunnel context, and local `MedicalClinic` + `FAQPage` schema.
+  4. **E-E-A-T Clinician Authority (`about-us.html`):** Highlighted each provider (Aaron Sents, PA-C; Laurie A. Salerno, ANP-BC; Shanice Edwards, NP-BC) with NPI-backed credentials, interactive clinician matching, and `reviewedBy` attribution across all 8 patient education guides.
 
 ---
 
-## 2. Live Header Navigation Structure (Implemented in `/concept/1`)
+## 2. Live Header Navigation Structure (Implemented Across All 34 Pages)
 
 ```text
 [Hampton Roads Primary Care Logo]
-├── Home (/)
-├── About Us (/about-us/)
-│   ├── About the Clinic (/about-us/)
-│   ├── Our Medical Team (/team/)
-│   ├── Aaron Sents, PA-C (/team/aaron-sents-pa-c/)
-│   ├── Laurie Salerno, ANP-BC (/team/laurie-salerno-anp-bc/)
-│   ├── Shanice Edwards, NP-BC (/team/shanice-edwards-np-bc/)
-│   ├── What to Expect: First Visit (/what-to-expect-first-visit/)
-│   ├── Careers (/careers/)
-│   └── Online Bill Pay (/pay/)
-├── Services (/services/)  [Client's 12 Live Clinical Services]
-│   ├── Annual Wellness Exams (/annual-wellness-exams/)
-│   ├── Chronic Disease Management (/chronic-disease-management/)
-│   ├── Acute Illness Care (/acute-illness-care/)
-│   ├── Preventive Health Screenings (/preventive-health-screenings/)
-│   ├── Immunizations & Vaccinations (/immunizations-and-vaccinations/)
-│   ├── Telemedicine Consultations (/telemedicine-consultations/)
-│   ├── Women’s Health Services (/womens-health-services/)
-│   ├── Men’s Health Services (/mens-health-services/)
-│   ├── Management of Mental Health Conditions (/management-of-mental-health-conditions/)
-│   ├── Minor Injury Treatment (/minor-injury-treatment/)
-│   ├── Nutrition & Weight Management Advice (/nutrition-and-weight-management-advice/)
-│   └── Health Education & Counseling (/health-education-counseling/)
-├── Locations (/locations/)  [Local SEO Pillar]
-│   ├── Portsmouth, VA — Primary Clinic (/locations/portsmouth-va/)
-│   ├── Norfolk, VA Primary Care (/locations/norfolk-va/)
-│   ├── Chesapeake, VA Primary Care (/locations/chesapeake-va/)
-│   ├── Suffolk, VA Primary Care (/locations/suffolk-va/)
-│   ├── Virginia Beach, VA Primary Care (/locations/virginia-beach-va/)
-│   └── Virginia Telehealth Visits (/telehealth/)
-├── Education (/education/)  [Our Own First-Party Content — Replaces External CDC/AHA Links]
-│   ├── Patient Education Library (/education/)
-│   ├── High Blood Pressure Guide (/education/high-blood-pressure/)
-│   ├── Hypertension Care Plan (/education/hypertension-management/)
-│   ├── Type 2 Diabetes & A1C Guide (/education/type-2-diabetes/)
-│   ├── Heart Disease Prevention (/education/heart-disease-prevention/)
-│   ├── Atrial Fibrillation (AFib) (/education/atrial-fibrillation/)
-│   ├── Stroke Warning Signs & Care (/education/stroke-warning-signs/)
-│   ├── Cardiac Arrest vs. Heart Attack (/education/cardiac-arrest-guide/)
-│   └── Smoking Cessation Program (/education/smoking-cessation/)
-├── Payment & Insurance (/payment-insurance-policy/)
-│   ├── Payment & Insurance Policy (/payment-insurance-policy/)
-│   ├── Medicare & Advantage Plans (/insurance/medicare-primary-care/)
-│   ├── TRICARE & Military Families (/insurance/tricare-military-care/)
-│   ├── Sliding Fee Scale & Self-Pay (/insurance/sliding-fee-scale/)
-│   └── Pay Your Bill Online (/pay/)
-├── Blog (/blog/)
-├── Contact (/contact/)
-└── [CTA] Patient Portal (OptiMantra Login)
+├── Home (index.html)
+├── About Us (about-us.html)
+│   ├── About the Clinic (about-us.html)
+│   ├── Our Medical Team (about-us.html#team)
+│   ├── Aaron Sents, PA-C (about-us.html#aaron-sents)
+│   ├── Laurie Salerno, ANP-BC (about-us.html#laurie-salerno)
+│   ├── Shanice Edwards, NP-BC (about-us.html#shanice-edwards)
+│   ├── What to Expect: First Visit (blog.html#what-to-expect-first-visit)
+│   ├── Careers (about-us.html#careers)
+│   └── Online Bill Pay (payment-insurance-policy.html#pay)
+├── Services (services.html)  [Client's 12 Live Clinical Services — Mega Menu]
+│   ├── Annual Wellness Exams (annual-wellness-exams.html)
+│   ├── Preventive Health Screenings (preventive-health-screenings.html)
+│   ├── Immunizations & Vaccinations (immunizations-and-vaccinations.html)
+│   ├── Women’s Health Services (womens-health-services.html)
+│   ├── Men’s Health Services (mens-health-services.html)
+│   ├── Telemedicine Consultations (telemedicine-consultations.html)
+│   ├── Chronic Disease Management (chronic-disease-management.html)
+│   ├── Acute Illness Care (acute-illness-care.html)
+│   ├── Mental Health Conditions (management-of-mental-health-conditions.html)
+│   ├── Minor Injury Treatment (minor-injury-treatment.html)
+│   ├── Nutrition & Weight Advice (nutrition-and-weight-management-advice.html)
+│   └── Health Education & Counseling (health-education-counseling.html)
+├── Locations (locations.html)  [Local SEO Pillar — 7 Pages Built]
+│   ├── All Service Areas (locations.html)
+│   ├── Portsmouth, VA · Primary Clinic (portsmouth-va.html)
+│   ├── Norfolk, VA Primary Care (norfolk-va.html)
+│   ├── Chesapeake, VA Primary Care (chesapeake-va.html)
+│   ├── Suffolk, VA Primary Care (suffolk-va.html)
+│   ├── Virginia Beach, VA Primary Care (virginia-beach-va.html)
+│   └── Virginia Telehealth Visits (telehealth.html)
+├── Education (education.html)  [First-Party Clinical Guides — Mega Menu, 9 Pages Built]
+│   ├── Patient Education Library (education.html)
+│   ├── High Blood Pressure Guide (high-blood-pressure.html)
+│   ├── Hypertension Care Plan (hypertension-management.html)
+│   ├── Heart Disease Prevention (heart-disease-prevention.html)
+│   ├── Atrial Fibrillation (AFib) (atrial-fibrillation.html)
+│   ├── Cardiac Arrest vs. Heart Attack (cardiac-arrest-guide.html)
+│   ├── Type 2 Diabetes & A1C Guide (type-2-diabetes.html)
+│   ├── Stroke Warning Signs & Care (stroke-warning-signs.html)
+│   ├── Smoking Cessation Program (smoking-cessation.html)
+│   └── First Visit Preparation Guide (blog.html#what-to-expect-first-visit)
+├── Payment & Insurance (payment-insurance-policy.html)
+│   ├── Payment & Insurance Policy (payment-insurance-policy.html)
+│   ├── Medicare & Advantage Plans (payment-insurance-policy.html#medicare-primary-care)
+│   ├── TRICARE & Military Families (payment-insurance-policy.html#tricare-military-care)
+│   ├── Sliding Fee Scale & Self-Pay (payment-insurance-policy.html#sliding-fee-scale)
+│   └── Pay Your Bill Online (payment-insurance-policy.html#pay)
+├── Blog (blog.html)
+├── Contact (contact.html)
+└── [CTA] Patient Portal (OptiMantra Login) & Book a Visit Online
 ```
 
 ---
 
-## 3. Complete Page Inventory & URL Hierarchy (43 Pages Across 6 Pillars)
+## 3. Complete Page Inventory & Build Status (34 Live HTML Pages Built)
 
-### Pillar 1: Core Clinic & Conversion Pages (9 Pages — Existing Live Slugs Preserved)
-| URL Slug | Status | Target Primary Keyword | Schema Types |
+### Pillar 1 & 2: Core Clinic, Provider E-E-A-T & Conversion Pages (6 Built Pages + Integrated Sections)
+| File / URL | Status | Target Primary Keyword | Schema Types |
 | :--- | :--- | :--- | :--- |
-| `/` | Built (`/concept/1`) | primary care portsmouth va | `MedicalClinic`, `Physician`, `FAQPage` |
-| `/about-us/` | Live Slug (Redesign) | hampton roads primary care portsmouth va | `MedicalClinic`, `AboutPage` |
-| `/contact/` | Live Slug (Redesign) | primary care clinic 355 crawford st portsmouth | `MedicalClinic`, `ContactPage` |
-| `/book-an-appointment/` | Live Slug (Redesign) | schedule primary care appointment portsmouth va | `MedicalClinic`, `WebPage` |
-| `/what-to-expect-first-visit/` | Live Slug (Redesign) | new patient primary care visit portsmouth va | `WebPage`, `FAQPage` |
-| `/patient-portal/` | Live Slug (Redesign) | hampton roads primary care patient portal | `WebPage` |
-| `/pay/` | Live Slug (Redesign) | pay medical bill hampton roads primary care | `WebPage` |
-| `/careers/` | Live Slug (Redesign) | nurse practitioner pa jobs portsmouth va | `JobPosting`, `WebPage` |
-| `/privacy-policy/` & `/terms-and-conditions/` | Live Slugs | legal & HIPAA compliance pages | `WebPage` |
+| `index.html` | **Built & Live** | primary care portsmouth va | `MedicalClinic`, `Physician`, `FAQPage` |
+| `about-us.html` (`#team`, `#aaron-sents`, `#laurie-salerno`, `#shanice-edwards`, `#careers`) | **Built & Live** | hampton roads primary care portsmouth va | `MedicalClinic`, `AboutPage`, `Physician` |
+| `contact.html` | **Built & Live** | primary care clinic 355 crawford st portsmouth | `MedicalClinic`, `ContactPage`, `FAQPage` |
+| `payment-insurance-policy.html` (`#medicare-primary-care`, `#tricare-military-care`, `#sliding-fee-scale`, `#pay`) | **Built & Live** | primary care insurance accepted portsmouth va | `MedicalWebPage`, `FAQPage`, `BreadcrumbList` |
+| `blog.html` (`#what-to-expect-first-visit`) | **Built & Live** | new patient primary care visit portsmouth va | `CollectionPage`, `Blog`, `BreadcrumbList` |
+| `education.html` | **Built & Live** | patient health education hampton roads | `MedicalWebPage`, `CollectionPage`, `BreadcrumbList` |
 
-### Pillar 2: Provider E-E-A-T Pages (4 Pages)
-| URL Slug | Status | Target Primary Keyword | Clinical Credentials Highlighted |
+### Pillar 3: Client's 12 Clinical Service Pages (13 Built Pages — Hub + 12 Standalone Pages)
+| File / URL | Status | Target Primary Keyword | Linked Education Guides |
 | :--- | :--- | :--- | :--- |
-| `/team/` | Live Slug (Redesign) | primary care doctors nurse practitioners portsmouth va | Overview of all 3 clinicians, philosophy of care |
-| `/team/aaron-sents-pa-c/` | **New SEO Page** | aaron sents pa-c portsmouth va | MMS Yale University, 10-Yr U.S. Navy Special Ops IDC, ODU BS Public Health |
-| `/team/laurie-salerno-anp-bc/` | **New SEO Page** | laurie salerno anp-bc portsmouth va | MS SUNY Buffalo, 34 yrs Internal Medicine, Cardiology & Clinical Nutrition |
-| `/team/shanice-edwards-np-bc/` | **New SEO Page** | shanice edwards np-bc portsmouth va | MSN Walden University, Norfolk State BSN, Family & Trauma-Informed Care |
+| `services.html` | **Built & Live** | primary care services portsmouth va | Links to all 12 service pages |
+| `annual-wellness-exams.html` | **Built & Live** | annual physical exam portsmouth va | `heart-disease-prevention.html`, `high-blood-pressure.html` |
+| `chronic-disease-management.html` | **Built & Live** | chronic disease management portsmouth va | `type-2-diabetes.html`, `high-blood-pressure.html` |
+| `acute-illness-care.html` | **Built & Live** | same day sick visit portsmouth va | `stroke-warning-signs.html`, `cardiac-arrest-guide.html` |
+| `preventive-health-screenings.html` | **Built & Live** | preventive health screenings portsmouth va | `heart-disease-prevention.html`, `type-2-diabetes.html` |
+| `immunizations-and-vaccinations.html` | **Built & Live** | adult vaccines flu shots portsmouth va | `heart-disease-prevention.html`, `education.html` |
+| `telemedicine-consultations.html` | **Built & Live** | telehealth primary care virginia | `hypertension-management.html`, `type-2-diabetes.html` |
+| `womens-health-services.html` | **Built & Live** | womens health primary care portsmouth va | `heart-disease-prevention.html`, `type-2-diabetes.html` |
+| `mens-health-services.html` | **Built & Live** | mens health clinic portsmouth va | `high-blood-pressure.html`, `heart-disease-prevention.html` |
+| `management-of-mental-health-conditions.html` | **Built & Live** | primary care anxiety depression portsmouth va | `hypertension-management.html`, `smoking-cessation.html` |
+| `minor-injury-treatment.html` | **Built & Live** | minor injury clinic portsmouth va | `stroke-warning-signs.html`, `education.html` |
+| `nutrition-and-weight-management-advice.html` | **Built & Live** | medical weight management portsmouth va | `type-2-diabetes.html`, `hypertension-management.html` |
+| `health-education-counseling.html` | **Built & Live** | health education counseling portsmouth va | `smoking-cessation.html`, `hypertension-management.html` |
 
-### Pillar 3: Client's 12 Clinical Service Pages (13 Pages — Exact Live Slugs Preserved)
-| URL Slug | Status | Target Primary Keyword | Linked Education Guides |
+### Pillar 4: Local SEO Location & Service-Area Pages (7 Built Pages — Hub + 6 Location Pages)
+| File / URL | Status | Target Primary Keyword | Local Angle & Landmarks |
 | :--- | :--- | :--- | :--- |
-| `/services/` | Live Hub Slug | primary care services portsmouth va | Links to all 12 service pages |
-| `/annual-wellness-exams/` | Live Service Slug | annual physical exam portsmouth va | Preventive Screenings, High Blood Pressure |
-| `/chronic-disease-management/` | Live Service Slug | chronic disease management portsmouth va | Type 2 Diabetes, Hypertension, Heart Disease |
-| `/acute-illness-care/` | Live Service Slug | same day sick visit portsmouth va | Minor Injury, Telemedicine |
-| `/preventive-health-screenings/` | Live Service Slug | preventive health screenings portsmouth va | Heart Disease, Diabetes, Stroke |
-| `/immunizations-and-vaccinations/` | Live Service Slug | adult vaccines flu shots portsmouth va | Annual Wellness Exams |
-| `/telemedicine-consultations/` | Live Service Slug | telehealth primary care virginia | Chronic Disease, Mental Health |
-| `/womens-health-services/` | Live Service Slug | womens health primary care portsmouth va | Preventive Screenings, Annual Wellness |
-| `/mens-health-services/` | Live Service Slug | mens health clinic portsmouth va | High Blood Pressure, Heart Disease |
-| `/management-of-mental-health-conditions/` | Live Service Slug | primary care anxiety depression portsmouth va | Telemedicine, Health Counseling |
-| `/minor-injury-treatment/` | Live Service Slug | minor injury clinic portsmouth va | Acute Illness Care |
-| `/nutrition-and-weight-management-advice/` | Live Service Slug | medical weight management portsmouth va | Type 2 Diabetes, Hypertension |
-| `/health-education-counseling/` | Live Service Slug | health education counseling portsmouth va | Smoking Cessation, Education Hub |
+| `locations.html` | **Built & Live** | primary care hampton roads va | Service-area hub, interactive harbor route planner, telehealth coverage |
+| `portsmouth-va.html` | **Built & Live** | primary care doctor portsmouth va | Olde Towne, Churchland, Cradock, Port Norfolk, Naval Medical Center Portsmouth, Norfolk Naval Shipyard |
+| `norfolk-va.html` | **Built & Live** | primary care doctor near norfolk va | 5-min Elizabeth River Ferry / 8-min Downtown & Midtown Tunnels, Ghent, Downtown Norfolk, Naval Station Norfolk |
+| `chesapeake-va.html` | **Built & Live** | primary care doctor near chesapeake va | Western Branch, Deep Creek, South Norfolk, Greenbrier via I-264 / I-464 / US-17 |
+| `suffolk-va.html` | **Built & Live** | primary care doctor near suffolk va | Harbour View, Northern Suffolk, Driver, Downtown Suffolk via I-664 / I-164 / US-58 (zero tunnels) |
+| `virginia-beach-va.html` | **Built & Live** | primary care doctor virginia beach telehealth | Town Center, Kempsville, Bayside, Oceanfront via I-264 W + hybrid Virginia video visits |
+| `telehealth.html` | **Built & Live** | online primary care doctor virginia | Statewide HIPAA video visits for any resident physically located in the Commonwealth of Virginia |
 
-### Pillar 4: Local SEO Location & Service-Area Pages (7 Pages)
-| URL Slug | Status | Target Primary Keyword | Local Angle & Landmarks |
-| :--- | :--- | :--- | :--- |
-| `/locations/` | **New SEO Hub** | primary care hampton roads va | Service-area map, driving times to 355 Crawford St, telehealth coverage |
-| `/locations/portsmouth-va/` | **New SEO Page** | primary care doctor portsmouth va | Olde Towne, Churchland, Cradock, Naval Medical Center Portsmouth, Norfolk Naval Shipyard |
-| `/locations/norfolk-va/` | **New SEO Page** | primary care doctor near norfolk va | 8 min via Downtown Tunnel / Elizabeth River Ferry, Ghent, Downtown Norfolk, Naval Station Norfolk |
-| `/locations/chesapeake-va/` | **New SEO Page** | primary care doctor near chesapeake va | Western Branch, Deep Creek, South Norfolk, Greenbrier via I-264 / I-464 |
-| `/locations/suffolk-va/` | **New SEO Page** | primary care doctor near suffolk va | Harbour View, Northern Suffolk, Downtown Suffolk via US-58 / I-664 |
-| `/locations/virginia-beach-va/` | **New SEO Page** | primary care doctor virginia beach telehealth | Town Center, Kempsville, hybrid in-clinic + Virginia video visits |
-| `/telehealth/` | Live Slug (Upgrade) | online primary care doctor virginia | Statewide HIPAA video visits for any resident in the Commonwealth of Virginia |
+### Pillar 5: First-Party Patient Education Hub (9 Built Pages — Hub + 8 Clinician-Reviewed Guides)
+> **Why this matters for SEO:** Previously on `htrpc.com`, the 8 items under the **Education** dropdown linked directly out to `cdc.gov` and `heart.org`. All 8 guides are now hosted as first-party, clinician-reviewed pages on `htrpc.com` with `MedicalWebPage` (`reviewedBy`), `FAQPage`, clinical data tables, and an interactive target number checker.
 
-### Pillar 5: First-Party Patient Education Hub (10 Pages — Owned Content Replacing External Links)
-> **Why this matters for SEO:** Currently on `htrpc.com`, the 8 items under the **Education** dropdown link directly out to `cdc.gov` and `heart.org`. Visitors leave the site immediately and Google sees zero topical depth on `htrpc.com`. We will build 8 comprehensive, clinician-reviewed guides hosted directly on `htrpc.com/education/*`, reviewed by Laurie Salerno, ANP-BC (34 years in cardiology & internal medicine) and Aaron Sents, PA-C.
-
-| URL Slug | Replaces Outbound Link | Target Primary Keyword | Internal Service CTA |
-| :--- | :--- | :--- | :--- |
-| `/education/` (plus `/health-resources/` redirect) | Live Hub Slug | patient health education hampton roads | Book a Preventive Screening |
-| `/education/high-blood-pressure/` | `cdc.gov/bloodpressure/about.htm` | high blood pressure symptoms treatment va | Chronic Disease Management |
-| `/education/hypertension-management/` | `cdc.gov/bloodpressure/facts.htm` | how to lower blood pressure naturally & with care | Nutrition & Weight + Chronic Care |
-| `/education/type-2-diabetes/` | `cdc.gov/diabetes/basics/type2.html` | type 2 diabetes a1c management guide | Chronic Disease + Nutrition Advice |
-| `/education/heart-disease-prevention/` | `cdc.gov/heartdisease/` | heart disease prevention screenings primary care | Preventive Health Screenings |
-| `/education/atrial-fibrillation/` | `heart.org/.../atrial-fibrillation` | atrial fibrillation afib symptoms primary care | Chronic Disease Management |
-| `/education/stroke-warning-signs/` | `cdc.gov/stroke/signs_symptoms.htm` | stroke warning signs fast & risk reduction | Preventive Health Screenings |
-| `/education/cardiac-arrest-guide/` | `cdc.gov/heartdisease/cardiac-arrest.htm` | cardiac arrest vs heart attack warning signs | Preventive Screenings & Emergency Guidance |
-| `/education/smoking-cessation/` | `heart.org/.../how-to-quit-tobacco` | medical smoking cessation program portsmouth va | Health Education & Counseling |
-| `/blog/` | Live Blog Index | hampton roads primary care blog | Seasonal health articles & clinic updates |
-
-### Pillar 6: Insurance, Sliding-Fee & Commercial Access Pages (7 Pages)
-| URL Slug | Status | Target Primary Keyword | Patient Segment |
-| :--- | :--- | :--- | :--- |
-| `/payment-insurance-policy/` | Live Slug (Redesign) | primary care insurance accepted portsmouth va | All insured & self-pay patients |
-| `/insurance/medicare-primary-care/` | **New SEO Page** | medicare primary care doctor portsmouth va | Seniors, Medicare Part B & Medicare Advantage |
-| `/insurance/tricare-military-care/` | **New SEO Page** | tricare primary care provider portsmouth norfolk | Active-duty families, Navy retirees, shipyard civilians |
-| `/insurance/sliding-fee-scale/` | **New SEO Page** | sliding fee scale clinic portsmouth va | Uninsured, underinsured, household income & size discounts |
-| `/work-school-sports-physicals/` | **New SEO Page** | work physicals sports physicals portsmouth va | Pre-employment, school, camp, and athletics exams |
-| `/lab-testing-and-diagnostics/` | **New SEO Page** | blood work lab testing primary care portsmouth va | A1C, lipid panel, thyroid panel, urinalysis, STI & rapid testing |
-| `/primary-care-vs-urgent-care/` | **New SEO Page** | same day doctor vs urgent care portsmouth va | Patients deciding between same-day primary care vs. urgent care |
-
-### Pillar 7: Semantic Condition Expansion & AI Search Readiness (6 Pages/Assets)
-| URL Slug | Status | Target Primary Keyword | Semantic Cluster Role |
-| :--- | :--- | :--- | :--- |
-| `/education/cholesterol-and-lipid-management/` | **New Semantic Guide** | high cholesterol treatment primary care va | Connects *Heart Disease* + *Preventive Screenings* + *Nutrition* |
-| `/education/thyroid-and-metabolic-health/` | **New Semantic Guide** | hypothyroidism thyroid lab testing primary care | Connects *Fatigue/Weight Symptoms* + *Women's Health* + *Lab Testing* |
-| `/education/anxiety-and-depression-primary-care/` | **New Semantic Guide** | anxiety depression treatment primary care va | Connects *Mental Health Service* + *Telemedicine* |
-| `/education/medical-weight-loss-metabolic-guide/` | **New Semantic Guide** | medical weight loss doctor portsmouth va | Connects *Nutrition & Weight Advice* + *Type 2 Diabetes* |
-| `/patient-reviews/` | **New Local Trust Page** | hampton roads primary care reviews | Verified patient testimonials + HIPAA-compliant GBP review funnel |
-| `/llms.txt` & `/sitemap.xml` | **New GEO / AI Asset** | AI Overviews, ChatGPT & Perplexity local medical citations | Machine-readable clinic, NPI, service, and location index |
+| File / URL | Replaces Outbound Link | Status | Reviewing Clinician | Internal Service CTA |
+| :--- | :--- | :--- | :--- | :--- |
+| `education.html` | Live Hub Slug | **Built & Live** | Laurie Salerno, ANP-BC & Aaron Sents, PA-C | All Clinical Services |
+| `high-blood-pressure.html` | `cdc.gov/bloodpressure/about.htm` | **Built & Live** | Laurie A. Salerno, ANP-BC | `chronic-disease-management.html` |
+| `hypertension-management.html` | `cdc.gov/bloodpressure/facts.htm` | **Built & Live** | Laurie A. Salerno, ANP-BC | `nutrition-and-weight-management-advice.html` |
+| `type-2-diabetes.html` | `cdc.gov/diabetes/basics/type2.html` | **Built & Live** | Laurie A. Salerno, ANP-BC | `chronic-disease-management.html` |
+| `heart-disease-prevention.html` | `cdc.gov/heartdisease/` | **Built & Live** | Laurie A. Salerno, ANP-BC | `preventive-health-screenings.html` |
+| `atrial-fibrillation.html` | `heart.org/.../atrial-fibrillation` | **Built & Live** | Laurie A. Salerno, ANP-BC | `chronic-disease-management.html` |
+| `stroke-warning-signs.html` | `cdc.gov/stroke/signs_symptoms.htm` | **Built & Live** | Aaron Sents, PA-C | `preventive-health-screenings.html` |
+| `cardiac-arrest-guide.html` | `cdc.gov/heartdisease/cardiac-arrest.htm` | **Built & Live** | Aaron Sents, PA-C | `preventive-health-screenings.html` |
+| `smoking-cessation.html` | `heart.org/.../how-to-quit-tobacco` | **Built & Live** | Shanice Edwards, NP-BC | `health-education-counseling.html` |
 
 ---
 
-## 4. Hub-and-Spoke Internal Linking Rules
-1. **Every Service Page (`/annual-wellness-exams/`, etc.)** links to:
-   - The 2 most relevant **Education Guides** (e.g., `/chronic-disease-management/` -> `/education/type-2-diabetes/` and `/education/hypertension-management/`).
-   - The 3 **Clinician Bio Pages** (`/team/aaron-sents-pa-c/`, `/team/laurie-salerno-anp-bc/`, `/team/shanice-edwards-np-bc/`).
-   - The **Portsmouth, Norfolk, Chesapeake, and Suffolk Location Pages**.
-2. **Every Education Guide (`/education/*`)** includes:
-   - A **"Medically Reviewed By"** badge linking to the reviewing clinician's bio page (`MedicalWebPage` schema with `reviewedBy`).
-   - An inline **"Schedule a Visit in Portsmouth or via Virginia Telehealth"** callout linking to the matching Service Page and `/book-an-appointment/`.
-3. **Every Location Page (`/locations/*`)** includes:
-   - Exact driving time & route to **355 Crawford Street, Suite 622, Portsmouth, VA 23704** (e.g., Elizabeth River Ferry / Downtown Tunnel from Norfolk; I-264 from Chesapeake; US-58 from Suffolk).
-   - Direct links to all 12 Clinical Service Pages and the Insurance/Sliding-Fee pages.
+## 4. Hub-and-Spoke Internal Linking Rules (Implemented)
+1. **Every Service Page (`annual-wellness-exams.html`, etc.)** links to:
+   - Its 2 most relevant **Standalone Education Guides** (e.g., `chronic-disease-management.html` -> `high-blood-pressure.html` and `type-2-diabetes.html`).
+   - The **Clinician Bio Section** (`about-us.html#team`, `#aaron-sents`, `#laurie-salerno`, `#shanice-edwards`).
+   - The **Locations Hub & City Pages** (`locations.html`, `portsmouth-va.html`, etc.) and **Sliding-Scale / Insurance** (`payment-insurance-policy.html`).
+2. **Every Education Guide (`high-blood-pressure.html`, etc.)** includes:
+   - A **"Medically Reviewed By"** fact and card linking to the reviewing clinician's bio (`MedicalWebPage` schema with `reviewedBy`).
+   - A clinical reference table (`clinical-table`), the interactive **Target Number Guide** (`#target-checker`), 4 condition-specific FAQs (`FAQPage` schema), and direct CTAs to the matching Clinical Service page and OptiMantra booking.
+3. **Every Location Page (`portsmouth-va.html`, etc.)** includes:
+   - Neighborhood-by-neighborhood driving times & routes to **355 Crawford Street, Suite 622, Portsmouth, VA 23704**, the interactive **Harbor Route Planner** (`#route-planner`), local FAQs, and direct links to all 12 Clinical Service Pages and the $25–$65 Sliding-Scale Fee Program.
 
 ---
 
 ## 5. Phased Implementation Roadmap
 
-### Phase 1: Frontpage & Global Navigation Foundation (Current — `/concept/1`)
-- [x] Frontpage design in `/concept/1` with full Local SEO (`MedicalClinic`, `Physician`, `FAQPage` JSON-LD).
-- [x] Production Header Menu with dropdowns for `About Us`, `Services` (12 client services), `Locations` (6 local SEO pages), `Education` (8 owned guides + blog), `Payment & Insurance`, `Contact`, and `Patient Portal`.
+### Phase 1: Frontpage & Global Navigation Foundation (Completed)
+- [x] Frontpage design (`index.html`) with full Local SEO (`MedicalClinic`, `Physician`, `FAQPage` JSON-LD).
+- [x] Production Header Mega-Menu with dropdowns for `About Us`, `Services` (12 clinical services), `Locations` (6 local SEO pages), `Education` (8 owned guides + blog), `Payment & Insurance`, `Blog`, `Contact`, and `Patient Portal`.
 
-### Phase 2: Core Clinic, Team & 12 Client Service Pages
-- [ ] Build reusable interior page templates following the `/concept/1` `colour-chapters` design system.
-- [ ] Build `/about-us/`, `/team/` + 3 individual clinician profile pages, `/contact/`, `/payment-insurance-policy/`, and `/what-to-expect-first-visit/`.
-- [ ] Migrate and SEO-upgrade all 12 client clinical service pages at their exact existing URLs.
+### Phase 2: Core Clinic, Team & 12 Client Service Pages (Completed)
+- [x] Built core interior pages (`about-us.html`, `services.html`, `locations.html`, `education.html`, `payment-insurance-policy.html`, `blog.html`, `contact.html`) following the `colour-chapters` design system.
+- [x] Built and SEO-upgraded all 12 client clinical service pages (`annual-wellness-exams.html`, `chronic-disease-management.html`, `acute-illness-care.html`, `preventive-health-screenings.html`, `immunizations-and-vaccinations.html`, `telemedicine-consultations.html`, `womens-health-services.html`, `mens-health-services.html`, `management-of-mental-health-conditions.html`, `minor-injury-treatment.html`, `nutrition-and-weight-management-advice.html`, `health-education-counseling.html`).
 
-### Phase 3: Local SEO Location Pages (`/locations/*`)
-- [ ] Build `/locations/` hub + `/locations/portsmouth-va/`, `/locations/norfolk-va/`, `/locations/chesapeake-va/`, `/locations/suffolk-va/`, `/locations/virginia-beach-va/`, and `/telehealth/`.
+### Phase 3: Local SEO Location Pages (Completed)
+- [x] Built `locations.html` hub + `portsmouth-va.html`, `norfolk-va.html`, `chesapeake-va.html`, `suffolk-va.html`, `virginia-beach-va.html`, and `telehealth.html` with neighborhood travel tables and `MedicalClinic` + `FAQPage` schema.
 
-### Phase 4: First-Party Education Hub & Insurance Pages (`/education/*` & `/insurance/*`)
-- [ ] Write and publish all 8 first-party condition guides under `/education/*` (replacing outbound CDC/AHA links) with `MedicalWebPage` and `FAQPage` schema.
-- [ ] Build `/insurance/medicare-primary-care/`, `/insurance/tricare-military-care/`, and `/insurance/sliding-fee-scale/`.
+### Phase 4: First-Party Education Hub & Condition Guides (Completed)
+- [x] Wrote and published all 8 first-party condition guides (`high-blood-pressure.html`, `hypertension-management.html`, `type-2-diabetes.html`, `heart-disease-prevention.html`, `atrial-fibrillation.html`, `stroke-warning-signs.html`, `cardiac-arrest-guide.html`, `smoking-cessation.html`) with `MedicalWebPage` (`reviewedBy`) and `FAQPage` schema, clinical tables, and interactive number checker.
+
+### Phase 5: Optional Future Expansion (Semantic & Technical Assets)
+- [ ] Optional standalone provider bio pages (`aaron-sents-pa-c.html`, `laurie-salerno-anp-bc.html`, `shanice-edwards-np-bc.html`) and standalone insurance sub-pages if desired beyond `about-us.html` and `payment-insurance-policy.html`.
+- [ ] `sitemap.xml` and `llms.txt` machine-readable index for search engines and AI citation crawlers.
