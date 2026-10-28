@@ -1,0 +1,9 @@
+# AI & Agent Data
+.agents/
+.taste-skill/
+.claude/
+.gemini/
+skills-lock.json
+
+# Concept folder
+concept/
